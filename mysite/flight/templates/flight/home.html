@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <h1>Home</h1>
+
+    <form action="."  class="form-reg" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html> -->
+<style type="text/css">
+    label{
+        color:yellow;
+    }
+</style>
+
+<div class="tab-1 resp-tab-content roundtrip">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <button class="close" data-dismiss="alert"> &times;</button>
+                    <li class="alert alert-success">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+  
+                <form  class="form-reg" method="POST" >
+                        {% csrf_token %}
+                        
+				{% for field in form %}
+                        {% for error in field.errors %}
+                        <p style="color:yellow">{{ error }}</p>
+                        {% endfor %}
+                {% endfor %}
+
+                        {% if form.non_field_errors %}
+                        <div style="color:yellow">
+                                <p> {{  form.non_field_errors }}</p>
+                        </div>
+                        {% endif %}
+                                    
+                        <div class="row">
+                                <div class="col-md-6  form-label-group">
+                                        <label>Departure city</label> 
+                                        <input type="text" name="departure_city"  class="form-control" placeholder="Departure city"  required autofocus>
+                                       
+                                </div>
+                                <div class="col-md-6   form-label-group" >
+                                        <label>Destination city</label>
+                                        <input type="text" name="destination_city" id="inputUsername" class="form-control" placeholder="Destination city" required autofocus>
+                                        
+                                </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-6  form-label-group">
+                                        <label> Departure date</label>
+                                        <input type="date" name="departure_date" id="inputFirstName" class="form-control" placeholder="Departure date" required autofocus>
+                                        
+                                </div>
+                                <div class="col-md-6  form-label-group">
+                                        <label >Arrival date</label>
+                                        <input type="date" name="return_date" id="inputLastName" class="form-control" placeholder="Arrival date" required autofocus>
+                                        
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6   form-label-group">
+                                    <label>Number of Adult</label>
+                                    <input type="number"  name="no_of_adult" class="form-control" placeholder="Number of adult"  required autofocus>
+                                     
+                                </div>
+                                <div class="col-md-6   form-label-group">
+                                        <label>Number of Children</label>
+                                        <input type="number"  name="no_of_child" class="form-control" placeholder="Number of children"  required autofocus>
+                                        
+                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6   form-label-group">
+                                        <label>Number of Infants</label>
+                                        <input type="number" name="no_of_infant"  class="form-control" placeholder="Number of Infants" required>
+                                        
+                                </div>
+                                <div class="col-md-6   form-label-group" style="padding-top: 30px;">
+                                        <label>Cabin</label>
+                                        <select name="cabin">
+                                                <option value="All">All</option> 
+                                                <option value="Premium">Premium</option>   
+                                                <option value="Business">Business</option>   
+                                                <option value="First">First class</option>
+                                                <option value="Economy">Economy</option>  
+                                               
+                                        </select>
+                                </div>
+                                
+                            </div>
+                            
+                            <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+               
+
+    </div>
+
+{% endblock %}

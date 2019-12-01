@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style type="text/css">
+  h3{
+      color:black;
+  }
+
+  #search{
+    background-color: blanchedalmond;
+  }
+</style>
+<div id="search" class="tab-1 resp-tab-content roundtrip"  style="background-color: aliceblue;" >
+  <h1 style="color: black;">Search Results</h1>
+
+
+  <h3>Departure date: {{ flight.departure_date }}</h3>
+  <h3>Departure time: {{ flight.departure_time }}</h3>
+  <h3>Flight price: {{ flight.price }}</h3>
+  <h3>Airline: {{ flight.airline }}</h3>
+  <h3>Arrival date: {{ flight.arrival_date }}</h3>
+  <h3>Arrival time: {{ flight.arrival_time }}</h3>
+
+</div>
+   
+  {% endblock %}
